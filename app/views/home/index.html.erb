@@ -1,0 +1,21 @@
+<% if current_user %>
+    <div class="page-header">
+      <h1>Here is some info about you...</h1>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <ul>
+          <li><strong>Name:</strong> <%= current_user.name %></li>
+          <li><strong>Provider:</strong> <%= current_user.provider %></li>
+          <li><strong>uID:</strong> <%= current_user.uid %></li>
+          <li><strong>Signed in:</strong> <%= current_user.sign_in_count %> <span>times</span></li>
+          <li><strong>Email:</strong> <%= current_user.email %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="page-header">
+      <h2>You can logout from the application (or the console via CURL)</h2>
+    </div>
+<% else %>
+    <%= render 'partials/welcome' %>
+<% end %>
