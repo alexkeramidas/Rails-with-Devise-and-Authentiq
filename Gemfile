@@ -22,7 +22,7 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'devise'
-gem 'omniauth-authentiq', path: 'omniauth-authentiq-0.2.2'
+gem 'omniauth-authentiq', path: 'omniauth-authentiq'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

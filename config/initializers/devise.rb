@@ -249,15 +249,22 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :authentiq, ENV["AUTHENTIQ_APP_ID"], ENV["AUTHENTIQ_APP_SECRET"], {scope: 'aq:name email~rs address aq:push', enable_remote_sign_out: (
-  lambda do |request|
-    if Rails.cache.read("omnivise:#{:authentiq}:#{request.params['user_id']}") == request.params['user_id']
-      Rails.cache.delete("omnivise:#{:authentiq}:#{request.params['user_id']}")
-      true
-    else
-      false
+    lambda do |request|
+      if Rails.cache.read("omnivise:#{:authentiq}:#{request.params['sid']}") == request.params['sid']
+        Rails.cache.delete("omnivise:#{:authentiq}:#{request.params['sid']}")
+        true
+      else
+        false
+      end
     end
-  end
-  )}
+    ),
+    client_options: {
+       :site => 'https://dev.connect.authentiq.io/',
+       :authorize_url => '/backchannel-logout/authorize',
+       :token_url => '/backchannel-logout/token',
+       :callback_url => 'https://9d64efa0.ngrok.io/users/auth/authentiq/callback'
+    }
+  }
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

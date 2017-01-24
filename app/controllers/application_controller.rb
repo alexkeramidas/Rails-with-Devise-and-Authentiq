@@ -4,14 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def validate_authentiq_session!
-    return unless signed_in? && session[:service_tickets]
+    return unless signed_in? && session[:authentiq_tickets]
 
-    valid = session[:service_tickets].all? do |provider, ticket|
+    valid = session[:authentiq_tickets].all? do |provider, ticket|
       Rails.cache.read("omnivise:#{provider}:#{ticket}").present?
     end
 
     unless valid
-      session[:service_tickets] = nil
+      session[:authentiq_tickets] = nil
       sign_out current_user
       redirect_to new_user_session_path
     end
