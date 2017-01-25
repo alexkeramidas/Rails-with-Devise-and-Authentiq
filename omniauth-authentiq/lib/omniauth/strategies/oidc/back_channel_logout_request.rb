@@ -40,7 +40,7 @@ module OmniAuth
 
         def decode_logout_token(logout_token)
           begin
-            puts 'logout_token =' + logout_token
+            puts 'logout_token =' + logout_token.to_s
             logout_jwt = JWT.decode logout_token, @options.client_secret, true, {
                 :algorithm => algorithm,
                 :iss => issuer,
@@ -75,8 +75,8 @@ module OmniAuth
         end
 
         def back_channel_logout_response(code, body)
-          puts 'code =' + code
-          puts 'body =' + body
+          puts 'code =' + code.to_s
+          puts 'body =' + body.to_s
           response = Rack::Response.new
           response.status = code
           response['Cache-Control'] = 'no-cache, no-store'

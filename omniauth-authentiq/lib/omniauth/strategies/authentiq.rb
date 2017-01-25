@@ -80,8 +80,8 @@ module OmniAuth
       end
 
       def should_sign_out?
-        puts 'post? = ' + request.post?
-        puts 'params?' + request.params
+        puts 'post? = ' + request.post?.to_s
+        puts 'params?' + request.params.to_s
         request.post? && request.params.has_key?('logout_token')
       end
 
