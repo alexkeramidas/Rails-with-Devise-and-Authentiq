@@ -15,6 +15,7 @@ module OmniAuth
             # a proc must be set in the devise.rb initializer of the rails app
             result = sign_out_callback.call(*back_channel_logout_request)
           rescue StandardError => err
+            puts err.to_s
             result = back_channel_logout_response(400, [err.to_s])
           else
             if result
@@ -39,6 +40,7 @@ module OmniAuth
 
         def decode_logout_token(logout_token)
           begin
+            puts 'logout_token =' + logout_token
             logout_jwt = JWT.decode logout_token, @options.client_secret, true, {
                 :algorithm => algorithm,
                 :iss => issuer,
@@ -73,6 +75,8 @@ module OmniAuth
         end
 
         def back_channel_logout_response(code, body)
+          puts 'code =' + code
+          puts 'body =' + body
           response = Rack::Response.new
           response.status = code
           response['Cache-Control'] = 'no-cache, no-store'
