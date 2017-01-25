@@ -258,6 +258,7 @@ Devise.setup do |config|
       end
     end
     ),
+    issuer: 'https://dev.connect.authentiq.io/',
     client_options: {
        :site => 'https://dev.connect.authentiq.io/',
        :authorize_url => '/backchannel-logout/authorize',
