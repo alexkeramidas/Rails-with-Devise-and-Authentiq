@@ -261,8 +261,7 @@ Devise.setup do |config|
     client_options: {
        :site => 'https://dev.connect.authentiq.io/',
        :authorize_url => '/backchannel-logout/authorize',
-       :token_url => '/backchannel-logout/token',
-       :callback_url => 'https://devise-omniauth-demo.herokuapp.com/users/auth/authentiq/callback'
+       :token_url => '/backchannel-logout/token'
     }
   }
   # ==> Warden configuration
