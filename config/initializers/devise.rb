@@ -248,22 +248,24 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :authentiq, ENV["AUTHENTIQ_APP_ID"], ENV["AUTHENTIQ_APP_SECRET"], {scope: 'aq:name email~rs address aq:push', enable_remote_sign_out: (
-    lambda do |request|
-      if Rails.cache.read("omnivise:#{:authentiq}:#{request.params['sid']}") == request.params['sid']
-        Rails.cache.delete("omnivise:#{:authentiq}:#{request.params['sid']}")
-        true
-      else
-        false
+  config.omniauth :authentiq, ENV["AUTHENTIQ_APP_ID"], ENV["AUTHENTIQ_APP_SECRET"], {
+      scope: 'aq:name email~rs address aq:push',
+      enable_remote_sign_out: (
+      lambda do |request|
+        if Rails.cache.read("application:#{:authentiq}:#{request.params['sid']}") == request.params['sid']
+          Rails.cache.delete("application:#{:authentiq}:#{request.params['sid']}")
+          true
+        else
+          false
+        end
       end
-    end
-    ),
-    issuer: 'https://dev.connect.authentiq.io/backchannel-logout/',
-    client_options: {
-       :site => 'https://dev.connect.authentiq.io/',
-       :authorize_url => '/backchannel-logout/authorize',
-       :token_url => '/backchannel-logout/token'
-    }
+      ),
+      issuer: 'https://dev.connect.authentiq.io/backchannel-logout/',
+      client_options: {
+          :site => 'https://dev.connect.authentiq.io/',
+          :authorize_url => '/backchannel-logout/authorize',
+          :token_url => '/backchannel-logout/token'
+      }
   }
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
