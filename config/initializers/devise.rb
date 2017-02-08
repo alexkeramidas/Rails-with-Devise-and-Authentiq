@@ -264,7 +264,8 @@ Devise.setup do |config|
       client_options: {
           :site => 'https://dev.connect.authentiq.io/',
           :authorize_url => '/backchannel-logout/authorize',
-          :token_url => '/backchannel-logout/token'
+          :token_url => '/backchannel-logout/token',
+          :info_url => '/backchannel-logout/userinfo'
       }
   }
   # ==> Warden configuration

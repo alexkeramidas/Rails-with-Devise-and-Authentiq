@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     return unless signed_in? && session[:authentiq_tickets]
 
     valid = session[:authentiq_tickets].all? do |provider, ticket|
-      Rails.cache.read("omnivise:#{provider}:#{ticket}").present?
+      Rails.cache.read("application:#{provider}:#{ticket}").present?
     end
 
     unless valid

@@ -2,7 +2,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def authentiq
     if params['sid']
-      Rails.cache.write("omnivise:#{:authentiq}:#{params['sid']}", params['sid'], expires_in: 28800)
+      Rails.cache.write("application:#{:authentiq}:#{params['sid']}", params['sid'], expires_in: 28800)
       session[:authentiq_tickets] ||= {}
       session[:authentiq_tickets][:authentiq] = params['sid']
     end
