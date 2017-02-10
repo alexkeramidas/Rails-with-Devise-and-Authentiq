@@ -250,7 +250,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :authentiq, ENV["AUTHENTIQ_APP_ID"], ENV["AUTHENTIQ_APP_SECRET"], {
       scope: 'aq:name email~rs address aq:push',
-      enable_remote_sign_out: (
+      remote_sign_out_handler: (
       lambda do |request|
         if Rails.cache.read("application:#{:authentiq}:#{request.params['sid']}") == request.params['sid']
           Rails.cache.delete("application:#{:authentiq}:#{request.params['sid']}")
