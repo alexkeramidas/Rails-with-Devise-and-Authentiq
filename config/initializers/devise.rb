@@ -260,12 +260,11 @@ Devise.setup do |config|
         end
       end
       ),
-      issuer: 'https://dev.connect.authentiq.io/backchannel-logout/',
       client_options: {
           :site => 'https://dev.connect.authentiq.io/',
           :authorize_url => '/backchannel-logout/authorize',
           :token_url => '/backchannel-logout/token',
-          :info_url => '/backchannel-logout/userinfo'
+          :jwt_issuer => 'https://dev.connect.authentiq.io/backchannel-logout/'
       }
   }
   # ==> Warden configuration
