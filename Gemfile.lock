@@ -1,5 +1,7 @@
-PATH
-  remote: omniauth-authentiq
+GIT
+  remote: https://github.com/AuthentiqID/omniauth-authentiq.git
+  revision: 2bd4e770324cfe2cb18a685d1469e480c4427b54
+  branch: backchannel-logout-support
   specs:
     omniauth-authentiq (0.2.5)
       omniauth-oauth2 (~> 1.3, >= 1.3.1)

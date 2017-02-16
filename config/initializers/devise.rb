@@ -261,7 +261,7 @@ Devise.setup do |config|
       end
       ),
       client_options: {
-          :site => 'https://dev.connect.authentiq.io/backchannel-logout',
+          :site => 'https://dev.connect.authentiq.io/backchannel-logout/',
           :authorize_url => 'https://dev.connect.authentiq.io/backchannel-logout/authorize',
           :token_url => 'https://dev.connect.authentiq.io/backchannel-logout/token'
       }

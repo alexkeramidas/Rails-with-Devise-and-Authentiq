@@ -23,8 +23,8 @@ gem 'coffee-rails', '~> 4.2'
 
 gem 'devise'
 # gem 'omniauth-authentiq', '~> 0.2.0'
-# gem 'omniauth-authentiq', :git => 'https://github.com/AuthentiqID/omniauth-authentiq.git', :branch => 'backchannel-logout-support'
-gem 'omniauth-authentiq', :path =>'omniauth-authentiq'
+gem 'omniauth-authentiq', :git => 'https://github.com/AuthentiqID/omniauth-authentiq.git', :branch => 'backchannel-logout-support'
+# gem 'omniauth-authentiq', :path =>'omniauth-authentiq'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
